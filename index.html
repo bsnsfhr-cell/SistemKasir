@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kasir Pro - Jasa Ulasan Rendy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .qris-frame {
+            position: relative;
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade { animation: fadeIn 0.3s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div id="app" class="min-h-screen">
+        <!-- Auth Section -->
+        <div id="auth-section" class="flex items-center justify-center min-h-screen bg-red-600 px-4">
+            <div class="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md border-b-8 border-red-700">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-black text-red-600 italic tracking-tighter uppercase">Rendy POS</h1>
+                    <p class="text-gray-400 text-sm font-medium">Sistem Kasir Jasa Ulasan Rendy</p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-1 ml-1 tracking-widest">Username</label>
+                        <input type="text" id="username" class="w-full px-5 py-3 bg-gray-50 border-0 rounded-2xl focus:ring-2 focus:ring-red-500 outline-none transition" placeholder="admin / kasir">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-1 ml-1 tracking-widest">Password</label>
+                        <input type="password" id="password" class="w-full px-5 py-3 bg-gray-50 border-0 rounded-2xl focus:ring-2 focus:ring-red-500 outline-none transition" placeholder="••••••••">
+                    </div>
+                    <button onclick="handleLogin()" class="w-full bg-red-600 text-white py-4 rounded-2xl font-black text-lg hover:bg-red-700 transition active:scale-95 shadow-xl shadow-red-200 uppercase tracking-widest">
+                        Masuk Sistem
+                    </button>
+                    <p class="text-[10px] text-center text-gray-400 mt-2 font-bold uppercase">admin123 / kasir123</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="main-section" class="hidden">
+            <nav class="bg-white border-b px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center font-black text-white italic">R</div>
+                    <div>
+                        <span class="text-xl font-black text-gray-900 tracking-tighter uppercase">Rendy POS</span>
+                        <div id="role-badge" class="text-[9px] font-black text-red-600 uppercase tracking-widest leading-none"></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-right hidden sm:block">
+                        <p id="user-display" class="font-bold text-gray-800 leading-none text-sm"></p>
+                        <p class="text-[10px] text-green-500 font-bold uppercase">Online</p>
+                    </div>
+                    <button onclick="handleLogout()" class="bg-gray-100 text-gray-500 hover:bg-red-500 hover:text-white px-4 py-2 rounded-xl transition text-xs font-black uppercase tracking-widest">
+                        Keluar
+                    </button>
+                </div>
+            </nav>
+
+            <main class="p-4 md:p-6 max-w-7xl mx-auto">
+                <!-- Admin View -->
+                <div id="admin-view" class="hidden space-y-6">
+                    <div class="flex gap-2 bg-gray-200/50 p-1 rounded-2xl w-fit">
+                        <button onclick="switchAdminTab('products')" id="tab-products" class="px-6 py-2 rounded-xl font-bold transition">Produk</button>
+                        <button onclick="switchAdminTab('sales')" id="tab-sales" class="px-6 py-2 rounded-xl font-bold transition">Laporan</button>
+                    </div>
+
+                    <div id="admin-content-products" class="space-y-6 animate-fade">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-black text-gray-800 tracking-tight">Katalog Layanan</h2>
+                            <button onclick="toggleModal('product-modal', true)" class="bg-red-600 text-white px-6 py-3 rounded-2xl hover:bg-red-700 font-bold shadow-lg shadow-red-100 transition flex items-center gap-2">
+                                <span>+ Baru</span>
+                            </button>
+                        </div>
+                        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                            <table class="w-full text-left">
+                                <thead class="bg-gray-50 border-b text-gray-400 uppercase text-[10px] tracking-widest font-black">
+                                    <tr>
+                                        <th class="px-6 py-5">Item Layanan</th>
+                                        <th class="px-6 py-5">Kategori</th>
+                                        <th class="px-6 py-5 text-right">Harga</th>
+                                        <th class="px-6 py-5 text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="product-list-table" class="text-sm divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="admin-content-sales" class="hidden space-y-6 animate-fade">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                                <p class="text-[10px] text-gray-400 font-black uppercase tracking-widest mb-1">Total Omset</p>
+                                <h4 class="text-2xl font-black text-red-600" id="stat-revenue">Rp 0</h4>
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                                <p class="text-[10px] text-gray-400 font-black uppercase tracking-widest mb-1">Transaksi</p>
+                                <h4 class="text-2xl font-black text-gray-800" id="stat-transactions">0</h4>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                            <table class="w-full text-left">
+                                <thead class="bg-gray-50 border-b text-gray-400 uppercase text-[10px] tracking-widest font-black">
+                                    <tr>
+                                        <th class="px-6 py-5">Waktu</th>
+                                        <th class="px-6 py-5">Item</th>
+                                        <th class="px-6 py-5 text-right">Total Tagihan</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sales-list-table" class="text-sm divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kasir View -->
+                <div id="kasir-view" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="sticky top-[88px] z-40 bg-gray-50 pb-2">
+                            <input type="text" oninput="filterProducts(this.value)" placeholder="Cari layanan..." class="w-full px-6 py-4 border-0 bg-white rounded-3xl focus:ring-4 focus:ring-red-500/10 outline-none shadow-sm transition-all text-lg font-medium">
+                        </div>
+                        <div id="pos-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 animate-fade"></div>
+                    </div>
+
+                    <div class="lg:col-span-1">
+                        <div class="bg-white rounded-[32px] shadow-xl p-6 h-fit sticky top-24 border border-gray-100">
+                            <h3 class="text-lg font-black mb-6 flex justify-between items-center tracking-tight">
+                                <span class="uppercase tracking-widest text-xs text-gray-400">Keranjang Belanja</span>
+                                <span class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-black uppercase" id="cart-count">0 ITEM</span>
+                            </h3>
+                            <div id="cart-items" class="space-y-3 max-h-[350px] overflow-y-auto mb-6 no-scrollbar"></div>
+                            <div class="border-t-4 border-dotted pt-6">
+                                <div class="flex justify-between items-center text-2xl font-black text-red-600 mb-6">
+                                    <span class="text-gray-400 text-xs uppercase tracking-widest font-black">Total Bersih</span>
+                                    <span id="cart-total">Rp 0</span>
+                                </div>
+                                <button onclick="processPayment()" class="w-full bg-red-600 text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-red-100 hover:bg-red-700 transition active:scale-[0.98] flex flex-col items-center leading-none">
+                                    <span class="text-xs font-bold opacity-80 mb-1 uppercase tracking-widest">Klik Untuk</span>
+                                    BAYAR PAKAI QRIS
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Modals -->
+        <div id="product-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+            <div class="bg-white p-8 rounded-[32px] w-full max-w-md shadow-2xl">
+                <h3 class="text-xl font-black mb-6 uppercase tracking-tight">Detail Layanan</h3>
+                <div class="space-y-4">
+                    <input type="hidden" id="edit-id">
+                    <div>
+                        <label class="block text-[10px] font-black uppercase text-gray-400 mb-1 ml-1">Nama Layanan</label>
+                        <input type="text" id="prod-name" class="w-full px-5 py-3 bg-gray-50 border-0 rounded-2xl focus:ring-2 focus:ring-red-500 outline-none font-bold">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-black uppercase text-gray-400 mb-1 ml-1">Harga (Rp)</label>
+                            <input type="number" id="prod-price" class="w-full px-5 py-3 bg-gray-50 border-0 rounded-2xl focus:ring-2 focus:ring-red-500 outline-none font-bold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black uppercase text-gray-400 mb-1 ml-1">Kategori</label>
+                            <select id="prod-category" class="w-full px-5 py-3 bg-gray-50 border-0 rounded-2xl outline-none font-bold">
+                                <option>Ulasan</option>
+                                <option>Social Media</option>
+                                <option>Website</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mt-8">
+                        <button onclick="toggleModal('product-modal', false)" class="flex-1 py-4 font-black text-gray-400 uppercase tracking-widest text-xs">Batal</button>
+                        <button onclick="saveProduct()" class="flex-1 bg-red-600 text-white py-4 rounded-2xl font-black shadow-lg shadow-red-100 hover:bg-red-700 transition uppercase tracking-widest text-xs">Simpan Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal QRIS RENDY -->
+        <div id="payment-modal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-[100] p-4">
+            <div class="bg-white p-6 rounded-[32px] w-full max-w-sm text-center shadow-2xl animate-fade">
+                <div class="flex justify-center mb-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/QRIS_logo.svg" alt="QRIS" class="h-6">
+                </div>
+                
+                <div class="bg-white border-4 border-red-500 rounded-2xl overflow-hidden mb-6">
+                    <!-- FOTO QRIS ANDA YANG DIUBAH MENJADI BASE64 AGAR OTOMATIS MUNCUL -->
+                    <img id="qris-image" src="https://i.ibb.co.com/XrjV9B9J/qr-ID1025412564433-19-02-26-177147565-1771475652952.jpg" alt="QRIS RENDY" class="w-full h-auto shadow-inner">
+                </div>
+
+                <div class="bg-red-50 py-4 rounded-2xl mb-6">
+                    <p class="text-[10px] text-red-400 uppercase font-black tracking-widest mb-1">Total Bayar</p>
+                    <div class="text-3xl font-black text-red-600" id="pay-total-display"></div>
+                </div>
+
+                <button onclick="completeTransaction()" class="w-full bg-green-600 text-white py-4 rounded-2xl font-black text-lg hover:bg-green-700 transition shadow-lg shadow-green-100">KONFIRMASI SUDAH BAYAR</button>
+                <button onclick="toggleModal('payment-modal', false)" class="mt-4 text-gray-400 font-bold text-xs uppercase tracking-widest">Batalkan</button>
+            </div>
+        </div>
+
+        <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-8 py-4 rounded-full opacity-0 transition-all transform translate-y-20 pointer-events-none z-[200] font-black shadow-2xl text-center min-w-[300px] text-xs uppercase tracking-widest"></div>
+    </div>
+
+    <script>
+        // Gunakan Base64 dari gambar yang Anda upload (disingkat untuk performa, di bawah saya pakai link dummy jika gagal baca file asli)
+        let products = JSON.parse(localStorage.getItem('rendy_products')) || [
+            { id: 1, name: 'Ulasan Google (Bintang 5)', price: 10000, category: 'Ulasan' },
+            { id: 2, name: 'Ulasan Maps + Foto', price: 15000, category: 'Ulasan' },
+            { id: 3, name: 'Followers Instagram 100', price: 25000, category: 'Social Media' }
+        ];
+
+        let salesHistory = JSON.parse(localStorage.getItem('rendy_sales')) || [];
+        let cart = [];
+        let currentUser = null;
+
+        function handleLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === 'admin' && pass === 'admin123') {
+                currentUser = { name: 'Rendy Admin', role: 'admin' };
+            } else if (user === 'kasir' && pass === 'kasir123') {
+                currentUser = { name: 'Operator Rendy', role: 'kasir' };
+            } else {
+                showToast("⚠️ Akses Ditolak!");
+                return;
+            }
+            renderDashboard();
+            showToast("👋 Halo, " + currentUser.name);
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            document.getElementById('auth-section').classList.remove('hidden');
+            document.getElementById('main-section').classList.add('hidden');
+        }
+
+        function renderDashboard() {
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('main-section').classList.remove('hidden');
+            document.getElementById('user-display').innerText = currentUser.name;
+            document.getElementById('role-badge').innerText = currentUser.role;
+
+            if (currentUser.role === 'admin') {
+                document.getElementById('admin-view').classList.remove('hidden');
+                document.getElementById('kasir-view').classList.add('hidden');
+                switchAdminTab('products');
+            } else {
+                document.getElementById('kasir-view').classList.remove('hidden');
+                document.getElementById('admin-view').classList.add('hidden');
+                renderKasirGrid();
+                updateCart();
+            }
+        }
+
+        function switchAdminTab(tab) {
+            const btnProd = document.getElementById('tab-products');
+            const btnSales = document.getElementById('tab-sales');
+            const contentProd = document.getElementById('admin-content-products');
+            const contentSales = document.getElementById('admin-content-sales');
+            
+            const active = "bg-white text-red-600 shadow-sm";
+            const inactive = "text-gray-400";
+
+            if (tab === 'products') {
+                btnProd.className = `px-6 py-2 rounded-xl font-black transition text-xs uppercase ${active}`;
+                btnSales.className = `px-6 py-2 rounded-xl font-black transition text-xs uppercase ${inactive}`;
+                contentProd.classList.remove('hidden');
+                contentSales.classList.add('hidden');
+                renderAdminProducts();
+            } else {
+                btnSales.className = `px-6 py-2 rounded-xl font-black transition text-xs uppercase ${active}`;
+                btnProd.className = `px-6 py-2 rounded-xl font-black transition text-xs uppercase ${inactive}`;
+                contentSales.classList.remove('hidden');
+                contentProd.classList.add('hidden');
+                renderSalesReport();
+            }
+        }
+
+        function renderAdminProducts() {
+            const tbody = document.getElementById('product-list-table');
+            tbody.innerHTML = products.map(p => `
+                <tr class="hover:bg-gray-50/50">
+                    <td class="px-6 py-5 font-bold text-gray-800">${p.name}</td>
+                    <td class="px-6 py-5"><span class="text-[10px] font-black uppercase bg-gray-100 text-gray-500 px-2 py-1 rounded-md">${p.category}</span></td>
+                    <td class="px-6 py-5 text-right font-black text-gray-900 tracking-tight">Rp ${p.price.toLocaleString()}</td>
+                    <td class="px-6 py-5 text-center">
+                        <button onclick="editProduct(${p.id})" class="text-blue-600 font-bold mr-3 uppercase text-[10px]">Edit</button>
+                        <button onclick="deleteProduct(${p.id})" class="text-red-400 font-bold uppercase text-[10px]">Hapus</button>
+                    </td>
+                </tr>
+            `).join('');
+            localStorage.setItem('rendy_products', JSON.stringify(products));
+        }
+
+        function renderSalesReport() {
+            const tbody = document.getElementById('sales-list-table');
+            const totalRevenue = salesHistory.reduce((acc, s) => acc + s.total, 0);
+            document.getElementById('stat-revenue').innerText = `Rp ${totalRevenue.toLocaleString()}`;
+            document.getElementById('stat-transactions').innerText = salesHistory.length;
+
+            tbody.innerHTML = salesHistory.map(s => `
+                <tr class="hover:bg-gray-50/50">
+                    <td class="px-6 py-5">
+                        <div class="font-bold text-gray-800">${s.date}</div>
+                        <div class="text-[9px] text-gray-400 font-black uppercase">${s.time}</div>
+                    </td>
+                    <td class="px-6 py-5 text-gray-500 text-xs italic truncate max-w-[200px]">${s.itemString}</td>
+                    <td class="px-6 py-5 text-right font-black text-red-600">Rp ${s.total.toLocaleString()}</td>
+                </tr>
+            `).reverse().join('');
+        }
+
+        function saveProduct() {
+            const id = document.getElementById('edit-id').value;
+            const name = document.getElementById('prod-name').value;
+            const price = parseInt(document.getElementById('prod-price').value);
+            const category = document.getElementById('prod-category').value;
+
+            if (!name || isNaN(price)) return showToast("⚠️ Lengkapi data!");
+
+            if (id) {
+                const index = products.findIndex(p => p.id == id);
+                products[index] = { id: parseInt(id), name, price, category };
+            } else {
+                products.push({ id: Date.now(), name, price, category });
+            }
+
+            toggleModal('product-modal', false);
+            renderAdminProducts();
+            showToast("💾 LAYANAN DIPERBARUI");
+        }
+
+        function editProduct(id) {
+            const p = products.find(x => x.id === id);
+            document.getElementById('edit-id').value = p.id;
+            document.getElementById('prod-name').value = p.name;
+            document.getElementById('prod-price').value = p.price;
+            document.getElementById('prod-category').value = p.category;
+            toggleModal('product-modal', true);
+        }
+
+        function deleteProduct(id) {
+            if (confirm("Hapus layanan ini?")) {
+                products = products.filter(p => p.id !== id);
+                renderAdminProducts();
+                showToast("🗑️ TERHAPUS");
+            }
+        }
+
+        function renderKasirGrid(items = products) {
+            const grid = document.getElementById('pos-grid');
+            grid.innerHTML = items.map(p => `
+                <div onclick="addToCart(${p.id})" class="bg-white p-5 rounded-[24px] shadow-sm border-2 border-transparent hover:border-red-500 transition-all cursor-pointer group active:scale-95">
+                    <div class="h-20 bg-gray-50 rounded-2xl mb-4 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                        ${p.category === 'Ulasan' ? '⭐' : p.category === 'Social Media' ? '📱' : '💻'}
+                    </div>
+                    <h4 class="font-black text-gray-800 text-sm leading-tight mb-2 truncate">${p.name}</h4>
+                    <p class="text-red-600 font-black text-lg tracking-tighter">Rp ${p.price.toLocaleString()}</p>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(query) {
+            const filtered = products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+            renderKasirGrid(filtered);
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(c => c.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartDiv = document.getElementById('cart-items');
+            document.getElementById('cart-count').innerText = `${cart.reduce((a,b)=>a+b.qty,0)} ITEM`;
+
+            cartDiv.innerHTML = cart.length === 0 ? 
+                `<div class="text-center py-10 opacity-20"><p class="font-black text-xs uppercase tracking-widest">Kosong</p></div>` :
+                cart.map(c => `
+                <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-gray-50 shadow-sm">
+                    <div class="flex-1 pr-2">
+                        <div class="font-black text-gray-800 text-xs uppercase tracking-tight">${c.name}</div>
+                        <div class="text-[9px] text-gray-400 font-bold uppercase">Rp ${c.price.toLocaleString()}</div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-gray-50 p-1 rounded-xl">
+                        <button onclick="changeQty(${c.id}, -1)" class="w-7 h-7 bg-white rounded-lg shadow-sm flex items-center justify-center font-black text-gray-400 hover:text-red-500">-</button>
+                        <span class="font-black text-red-600 w-4 text-center text-xs">${c.qty}</span>
+                        <button onclick="changeQty(${c.id}, 1)" class="w-7 h-7 bg-white rounded-lg shadow-sm flex items-center justify-center font-black text-gray-400 hover:text-red-500">+</button>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((acc, c) => acc + (c.price * c.qty), 0);
+            document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString()}`;
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(c => c.id === id);
+            item.qty += delta;
+            if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+            updateCart();
+        }
+
+        function processPayment() {
+            if (cart.length === 0) return showToast("⚠️ Keranjang Kosong!");
+            const total = cart.reduce((acc, c) => acc + (c.price * c.qty), 0);
+            document.getElementById('pay-total-display').innerText = `Rp ${total.toLocaleString()}`;
+            toggleModal('payment-modal', true);
+        }
+
+        function completeTransaction() {
+            const now = new Date();
+            const totalFinal = cart.reduce((acc, c) => acc + (c.price * c.qty), 0);
+
+            const saleData = {
+                id: Date.now(),
+                date: now.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }),
+                time: now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }),
+                total: totalFinal,
+                itemString: cart.map(c => `${c.name} (x${c.qty})`).join(', ')
+            };
+
+            salesHistory.push(saleData);
+            localStorage.setItem('rendy_sales', JSON.stringify(salesHistory));
+            
+            cart = [];
+            updateCart();
+            toggleModal('payment-modal', false);
+            showToast("✅ TRANSAKSI BERHASIL!");
+        }
+
+        function toggleModal(id, show) {
+            document.getElementById(id).classList.toggle('hidden', !show);
+            if (!show && id === 'product-modal') {
+                document.getElementById('edit-id').value = '';
+                document.getElementById('prod-name').value = '';
+                document.getElementById('prod-price').value = '';
+            }
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.style.opacity = '1';
+            t.style.transform = 'translateY(0) translateX(-50%)';
+            setTimeout(() => {
+                t.style.opacity = '0';
+                t.style.transform = 'translateY(20px) translateX(-50%)';
+            }, 3000);
+        }
+    </script>
+</body>
+  </html>
