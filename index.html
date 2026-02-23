@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AkunRendy.id - Solusi Digital Terlengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .gradient-dark { 
+            background: radial-gradient(circle at top right, #1e40af, transparent), 
+                        radial-gradient(circle at bottom left, #1e1b4b, transparent),
+                        linear-gradient(135deg, #0f172a 0%, #111827 100%); 
+        }
+        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #f1f5f9; }
+        .product-card:hover { transform: translateY(-8px); border-color: #3b82f6; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        .modal { transition: opacity 0.3s ease; display: none; }
+        .modal.active { display: flex; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">R</div>
+                <span class="text-xl font-bold tracking-tight text-blue-900">AkunRendy.id</span>
+            </div>
+            <button onclick="toggleCart()" class="relative p-2 text-slate-600 hover:text-blue-600 transition-colors">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+                <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-16 gradient-dark text-white px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <span class="bg-blue-500/20 text-blue-300 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 inline-block border border-blue-400/30 tracking-wide">TRUSTED DIGITAL SOLUTIONS</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Solusi Digital <br><span class="text-blue-400">Terbaik & Terjangkau</span></h1>
+            <p class="text-slate-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">Penyedia jasa pembuatan website, akun TikTok followers tinggi, jasa sosial media, dan berbagai akun premium aplikasi.</p>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Katalog Produk</h2>
+                <div class="h-1.5 w-20 bg-blue-600 rounded-full"></div>
+            </div>
+            <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+                <button onclick="filterItems('All')" class="filter-btn px-6 py-2.5 bg-blue-600 text-white rounded-full font-medium shadow-lg shadow-blue-200 transition-all">Semua</button>
+                <button onclick="filterItems('Website')" class="filter-btn px-6 py-2.5 bg-white text-slate-600 rounded-full font-medium hover:bg-slate-100 transition-all border border-slate-200">Website</button>
+                <button onclick="filterItems('TikTok')" class="filter-btn px-6 py-2.5 bg-white text-slate-600 rounded-full font-medium hover:bg-slate-100 transition-all border border-slate-200">TikTok</button>
+                <button onclick="filterItems('Premium')" class="filter-btn px-6 py-2.5 bg-white text-slate-600 rounded-full font-medium hover:bg-slate-100 transition-all border border-slate-200">Akun Premium</button>
+            </div>
+        </div>
+
+        <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Products will be injected here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-800 pb-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">R</div>
+                    <span class="text-xl font-bold tracking-tight">AkunRendy.id</span>
+                </div>
+                <p class="text-slate-400 leading-relaxed">Mitra terpercaya untuk kebutuhan aset digital Anda. Berpengalaman menangani ribuan transaksi dengan aman dan cepat.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-6">Layanan Utama</h3>
+                <ul class="space-y-4 text-slate-400">
+                    <li>Web Development</li>
+                    <li>TikTok Affiliate Specialist</li>
+                    <li>SMM Panel & Growth</li>
+                    <li>Subscription Apps</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-6">Metode Pembayaran</h3>
+                <div class="flex flex-wrap gap-4 opacity-70">
+                    <div class="bg-white px-3 py-1 rounded text-slate-900 font-bold text-sm">QRIS</div>
+                    <div class="bg-white px-3 py-1 rounded text-slate-900 font-bold text-sm">DANA</div>
+                    <div class="bg-white px-3 py-1 rounded text-slate-900 font-bold text-sm">GOPAY</div>
+                    <div class="bg-white px-3 py-1 rounded text-slate-900 font-bold text-sm">BANK</div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center mt-10 text-slate-500 text-sm">
+            © 2025 AkunRendy.id. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-0 z-[60] invisible overflow-hidden">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div id="cart-content" class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300">
+            <div class="p-6 h-full flex flex-col">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="text-2xl font-bold">Pesanan Anda</h3>
+                    <button onclick="toggleCart()" class="p-2 hover:bg-slate-100 rounded-full"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div id="cart-items" class="flex-1 overflow-y-auto space-y-4 pr-2">
+                    <!-- Cart items injected here -->
+                </div>
+                <div class="pt-6 border-t mt-6">
+                    <div class="flex justify-between mb-4">
+                        <span class="text-slate-500 font-medium">Total Pembayaran</span>
+                        <span id="cart-total" class="text-2xl font-bold text-blue-600">Rp 0</span>
+                    </div>
+                    <button onclick="showQRIS()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 shadow-xl shadow-blue-100 active:scale-[0.98] transition-all">Bayar Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal QRIS -->
+    <div id="qris-modal" class="modal fixed inset-0 z-[70] items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+        <div class="bg-white w-full max-w-md rounded-[2.5rem] p-10 text-center relative shadow-2xl">
+            <button onclick="toggleModal('qris-modal')" class="absolute top-6 right-6 p-2 hover:bg-slate-100 rounded-full transition-colors"><i class="fa-solid fa-xmark text-xl text-slate-400"></i></button>
+            <h3 class="text-2xl font-bold mb-2">QRIS Pembayaran</h3>
+            <p class="text-slate-500 mb-8 font-medium">Scan untuk memproses pembayaran</p>
+            <div class="bg-slate-50 p-6 rounded-3xl mb-8 border-2 border-dashed border-slate-200">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=ContohPembayaranQRIS" alt="QRIS" class="mx-auto rounded-lg shadow-sm">
+            </div>
+            <div class="text-left bg-blue-50 p-6 rounded-2xl mb-8">
+                <p class="text-blue-900 text-sm font-semibold mb-1 uppercase tracking-wider opacity-60">Total Bayar</p>
+                <p id="final-total" class="text-3xl font-black text-blue-600">Rp 0</p>
+            </div>
+            <button onclick="checkoutWA()" class="w-full bg-green-500 text-white py-4 rounded-2xl font-bold text-lg hover:bg-green-600 transition-all shadow-xl shadow-green-100 flex items-center justify-center space-x-3">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span>Konfirmasi via WhatsApp</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            // JASA & WEBSITE
+            { id: 1, category: 'Website', name: 'Website Profesional', price: 1000000, desc: 'Range 1jt - 5jt (Custom Design)', icon: 'fa-globe' },
+            { id: 2, category: 'TikTok', name: 'TikTok Affiliate 10K+', price: 1200000, desc: 'Followers 10K - 500K++ Stok Ready', icon: 'fa-user-plus' },
+            { id: 3, category: 'TikTok', name: 'TikTok Siap Live 1K', price: 100000, desc: 'Followers 1K Siap Jualan/Live', icon: 'fa-video' },
+            { id: 4, category: 'TikTok', name: 'TikTok Level 20-35', price: 500000, desc: 'Tanyakan stok admin (Akun Level)', icon: 'fa-star' },
+            { id: 5, category: 'Services', name: 'Unlock IMEI iPhone', price: 300000, desc: 'Durasi 3 Bulan Aman & Terpercaya', icon: 'fa-mobile-screen' },
+            { id: 6, category: 'Services', name: 'Hapus Akun Sosmed', price: 500000, desc: 'Hapus permanen akun pribadi (500rb-1jt)', icon: 'fa-user-slash' },
+            { id: 7, category: 'Services', name: 'Followers Sosmed', price: 60000, desc: 'Harga per 1000 Followers All Platform', icon: 'fa-users' },
+            
+            // APPS PREMIUM
+            { id: 8, category: 'Premium', name: 'AI Blackbox', price: 15000, desc: 'Premium 1 Bulan', icon: 'fa-code' },
+            { id: 9, category: 'Premium', name: 'AI Perplexity', price: 15000, desc: 'Premium 1 Bulan', icon: 'fa-magnifying-glass' },
+            { id: 10, category: 'Premium', name: 'Alight Motion', price: 5000, desc: 'Premium 1 Tahun', icon: 'fa-film' },
+            { id: 11, category: 'Premium', name: 'Apple Music', price: 15000, desc: 'Premium 1 Bulan', icon: 'fa-music' },
+            { id: 12, category: 'Premium', name: 'Bstation', price: 20000, desc: 'Premium 1 Bulan', icon: 'fa-play' },
+            { id: 13, category: 'Premium', name: 'Canva Pro', price: 5000, desc: 'Premium 1 Bulan', icon: 'fa-paintbrush' },
+            { id: 14, category: 'Premium', name: 'Capcut', price: 15000, desc: 'Premium 1 Bulan', icon: 'fa-scissors' },
+            { id: 15, category: 'Premium', name: 'ChatGPT Plus', price: 28000, desc: 'Premium 1 Bulan', icon: 'fa-robot' },
+            { id: 16, category: 'Premium', name: 'Disney+', price: 25000, desc: 'Premium 1 Bulan', icon: 'fa-clapperboard' },
+            { id: 17, category: 'Premium', name: 'Gemini AI', price: 25000, desc: 'Premium 1 Bulan', icon: 'fa-sparkles' },
+            { id: 18, category: 'Premium', name: 'Netflix Premium', price: 30000, desc: 'Premium 1 Bulan (4K HDR)', icon: 'fa-tv' },
+            { id: 19, category: 'Premium', name: 'Spotify Premium', price: 20000, desc: 'Premium 1 Bulan Private/Family', icon: 'fa-spotify' },
+            { id: 20, category: 'Premium', name: 'YouTube Premium', price: 10000, desc: 'Premium 1 Bulan No Ads', icon: 'fa-brands fa-youtube' },
+            { id: 21, category: 'Premium', name: 'Trading View', price: 15000, desc: 'Premium 1 Bulan', icon: 'fa-chart-line' },
+            { id: 22, category: 'Premium', name: 'Vidio Platinum', price: 25000, desc: 'Premium 1 Bulan', icon: 'fa-circle-play' },
+            { id: 23, category: 'Premium', name: 'Viu Premium', price: 5000, desc: 'Premium 1 Tahun', icon: 'fa-desktop' },
+            { id: 24, category: 'Premium', name: 'Scribd', price: 10000, desc: 'Premium 1 Bulan', icon: 'fa-book-open' },
+            { id: 25, category: 'Premium', name: 'Remini Pro', price: 5000, desc: 'Premium 1 Bulan', icon: 'fa-wand-magic-sparkles' }
+        ];
+
+        let cart = [];
+
+        function renderProducts(filter = 'All') {
+            const list = document.getElementById('product-list');
+            list.innerHTML = '';
+            
+            const filtered = filter === 'All' ? products : products.filter(p => p.category === filter);
+            
+            filtered.forEach(p => {
+                list.innerHTML += `
+                    <div class="product-card bg-white rounded-[2rem] p-6 flex flex-col group">
+                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                            <i class="fa-solid ${p.icon} text-2xl text-blue-600 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">${p.name}</h3>
+                        <p class="text-slate-500 text-sm mb-6 flex-grow leading-relaxed">${p.desc}</p>
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-50">
+                            <span class="text-blue-600 font-extrabold text-lg">${formatPrice(p.price)}</span>
+                            <button onclick="addToCart(${p.id})" class="bg-slate-900 text-white w-10 h-10 rounded-xl flex items-center justify-center hover:bg-blue-600 transition-all active:scale-90">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function formatPrice(num) {
+            return 'Rp ' + num.toLocaleString('id-ID');
+        }
+
+        function filterItems(category) {
+            renderProducts(category);
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-lg', 'shadow-blue-200');
+                btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                if(btn.innerText === category || (category === 'All' && btn.innerText === 'Semua')) {
+                    btn.classList.add('bg-blue-600', 'text-white', 'shadow-lg', 'shadow-blue-200');
+                    btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                }
+            });
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const inCart = cart.find(i => i.id === id);
+            if(inCart) inCart.qty++;
+            else cart.push({...product, qty: 1});
+            updateUI();
+        }
+
+        function updateUI() {
+            const cartList = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const countEl = document.getElementById('cart-count');
+            
+            cartList.innerHTML = cart.length === 0 ? '<div class="h-full flex flex-col items-center justify-center text-slate-400 opacity-50"><i class="fa-solid fa-cart-shopping text-6xl mb-4"></i><p>Keranjang Kosong</p></div>' : '';
+            
+            let total = 0;
+            let count = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.qty;
+                count += item.qty;
+                cartList.innerHTML += `
+                    <div class="flex items-center justify-between bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                                <i class="fa-solid ${item.icon} text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">${item.name}</h4>
+                                <p class="text-blue-600 font-bold text-xs">${formatPrice(item.price)}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white rounded-lg p-1 border shadow-sm">
+                            <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 flex items-center justify-center text-slate-400 hover:text-red-500"><i class="fa-solid fa-minus text-xs"></i></button>
+                            <span class="w-8 text-center font-bold text-sm">${item.qty}</span>
+                            <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 flex items-center justify-center text-slate-400 hover:text-blue-500"><i class="fa-solid fa-plus text-xs"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            totalEl.innerText = formatPrice(total);
+            countEl.innerText = count;
+        }
+
+        function updateQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if(item) {
+                item.qty += delta;
+                if(item.qty < 1) cart = cart.filter(i => i.id !== id);
+                updateUI();
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const content = document.getElementById('cart-content');
+            if(sidebar.classList.contains('invisible')) {
+                sidebar.classList.remove('invisible');
+                setTimeout(() => content.classList.remove('translate-x-full'), 10);
+            } else {
+                content.classList.add('translate-x-full');
+                setTimeout(() => sidebar.classList.add('invisible'), 300);
+            }
+        }
+
+        function toggleModal(id) { document.getElementById(id).classList.toggle('active'); }
+
+        function showQRIS() {
+            if(cart.length === 0) return;
+            document.getElementById('final-total').innerText = document.getElementById('cart-total').innerText;
+            toggleCart();
+            toggleModal('qris-modal');
+        }
+
+        function checkoutWA() {
+            const items = cart.map(i => `- ${i.name} (${i.qty}x)`).join('%0A');
+            const url = `https://wa.me/6289662947777?text=Konfirmasi+Pesanan:%0A${items}%0ATotal:+${document.getElementById('final-total').innerText}`;
+            window.open(url, '_blank');
+        }
+
+        window.onload = () => renderProducts();
+    </script>
+</body>
+</html>
+
+
