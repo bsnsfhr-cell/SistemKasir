@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faris Edrik | Professional Portfolio</title>
+    <title>Rendy | Professional Portfolio</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -28,6 +28,7 @@
         .glass-card:hover {
             border-color: rgba(45, 212, 191, 0.4);
             background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
         }
 
         .profile-float {
@@ -36,10 +37,9 @@
 
         @keyframes floating {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #134e4a; border-radius: 10px; }
@@ -53,7 +53,7 @@
 
     <nav class="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-md border-b border-white/10">
         <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-            <h1 class="text-xl font-bold tracking-tighter text-teal-400">FE<span class="text-white">.DEV</span></h1>
+            <h1 class="text-xl font-bold tracking-tighter text-teal-400">RENDY<span class="text-white">.DEV</span></h1>
             <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-[0.2em]">
                 <a href="#home" class="hover:text-teal-400 transition">Home</a>
                 <a href="#about" class="hover:text-teal-400 transition">About</a>
@@ -68,20 +68,20 @@
         <div class="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
             <div data-aos="fade-right" class="text-center md:text-left">
                 <p class="text-teal-400 font-mono mb-2 tracking-widest">Web Developer Specialist</p>
-                <h2 class="text-4xl md:text-5xl font-black leading-tight mb-4">
-                    Elevating Brands <br>With <span class="text-teal-400">Code.</span>
+                <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+                    Hi, I'm <span class="text-teal-400">Rendy</span> <br>Creative Developer.
                 </h2>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
                     <button onclick="toggleMusic()" class="bg-teal-500 text-slate-950 px-6 py-2 rounded-full text-xs font-bold flex items-center gap-2 hover:bg-teal-400 transition shadow-[0_0_20px_rgba(20,184,166,0.4)]">
-                        <i id="musicIcon" class="fas fa-play"></i> Listen Vibes
+                        <i id="musicIcon" class="fas fa-play"></i> Play Music
                     </button>
-                    <a href="#about" class="glass-card px-6 py-2 rounded-full text-xs font-bold hover:bg-white/10 transition">About Me</a>
+                    <a href="https://wa.me/62895700268700" target="_blank" class="glass-card px-6 py-2 rounded-full text-xs font-bold hover:bg-white/10 transition italic border-teal-500/50 text-teal-400">Hire Me</a>
                 </div>
             </div>
             <div data-aos="zoom-in" class="relative">
                 <div class="absolute inset-0 bg-teal-500 rounded-full blur-[80px] opacity-20"></div>
                 <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=300" 
-                     class="relative w-40 h-40 md:w-56 md:h-56 object-cover rounded-full border-4 border-teal-500/30 profile-float">
+                     class="relative w-40 h-40 md:w-56 md:h-56 object-cover rounded-2xl border-2 border-teal-500/30 profile-float shadow-2xl">
             </div>
         </div>
     </section>
@@ -89,24 +89,24 @@
     <section id="about" class="py-24 bg-slate-950/40">
         <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-up">
-                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
-                    <span class="text-teal-400">01.</span> Tentang Saya
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-teal-400">
+                    <span class="w-8 h-1 bg-teal-500 inline-block"></span> Tentang Saya
                 </h2>
-                <p class="text-slate-400 leading-relaxed mb-4">
-                    Saya Faris Edrik, seorang pengembang yang berdedikasi membangun aplikasi web modern yang responsif dan berfokus pada pengalaman pengguna.
+                <p class="text-slate-400 leading-relaxed italic border-l-2 border-teal-500/30 pl-4 mb-6">
+                    "Saya Rendy, pengembang web yang berdedikasi membangun aplikasi modern dengan kode yang bersih dan visual yang memukau. Fokus saya adalah mengubah ide kompleks menjadi kenyataan digital."
                 </p>
-                <p class="text-slate-400 leading-relaxed">
-                    Saya percaya bahwa kode yang baik bukan hanya tentang fungsi, tetapi juga tentang estetika dan efisiensi jangka panjang.
+                <p class="text-slate-400 text-sm">
+                    Berpengalaman dalam mengelola backend Laravel dan frontend React untuk menciptakan ekosistem web yang responsif.
                 </p>
             </div>
             <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <h4 class="text-2xl font-bold text-teal-400">2+</h4>
-                    <p class="text-[10px] text-slate-500 uppercase font-bold">Years Experience</p>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <h4 class="text-3xl font-bold text-teal-400">2+</h4>
+                    <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-1">Years Experience</p>
                 </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <h4 class="text-2xl font-bold text-teal-400">15+</h4>
-                    <p class="text-[10px] text-slate-500 uppercase font-bold">Projects Done</p>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <h4 class="text-3xl font-bold text-teal-400">15+</h4>
+                    <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-1">Projects Done</p>
                 </div>
             </div>
         </div>
@@ -114,50 +114,47 @@
 
     <section id="skills" class="py-24">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold">Tech Stack</h2>
-                <div class="h-1 w-20 bg-teal-500 mx-auto mt-2"></div>
-            </div>
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up text-teal-400">Tech Stack</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in">
-                    <i class="fab fa-laravel text-4xl text-red-500 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">LARAVEL</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left">
+                    <i class="fab fa-laravel text-4xl text-red-500 mb-2"></i>
+                    <p class="text-[10px] font-bold">LARAVEL</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="50">
-                    <i class="fab fa-react text-4xl text-cyan-400 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">REACT JS</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="50">
+                    <i class="fab fa-react text-4xl text-cyan-400 mb-2"></i>
+                    <p class="text-[10px] font-bold">REACT JS</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fab fa-js text-4xl text-yellow-400 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">JAVASCRIPT</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-[10px] font-bold">JAVASCRIPT</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="150">
-                    <i class="fab fa-php text-4xl text-blue-400 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">PHP</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="150">
+                    <i class="fas fa-wind text-4xl text-sky-400 mb-2"></i>
+                    <p class="text-[10px] font-bold">TAILWIND</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fab fa-html5 text-4xl text-orange-500 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">HTML5</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fab fa-php text-4xl text-indigo-400 mb-2"></i>
+                    <p class="text-[10px] font-bold">PHP</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="250">
-                    <i class="fab fa-css3-alt text-4xl text-blue-500 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">CSS3</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="250">
+                    <i class="fas fa-database text-4xl text-blue-500 mb-2"></i>
+                    <p class="text-[10px] font-bold">MYSQL</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-wind text-4xl text-sky-400 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">TAILWIND</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fab fa-node-js text-4xl text-green-500 mb-2"></i>
+                    <p class="text-[10px] font-bold">NODE JS</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="350">
-                    <i class="fab fa-node-js text-4xl text-green-500 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">NODE JS</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="350">
+                    <i class="fas fa-leaf text-4xl text-emerald-400 mb-2"></i>
+                    <p class="text-[10px] font-bold">ALPINE JS</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fas fa-leaf text-4xl text-emerald-400 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">ALPINE JS</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="400">
+                    <i class="fab fa-git-alt text-4xl text-orange-600 mb-2"></i>
+                    <p class="text-[10px] font-bold">GIT CONTROL</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="450">
-                    <i class="fas fa-database text-4xl text-indigo-400 group-hover:scale-110 transition"></i>
-                    <p class="mt-3 text-[10px] font-bold">MYSQL</p>
+                <div class="glass-card p-6 rounded-2xl text-center group" data-aos="flip-left" data-aos-delay="450">
+                    <i class="fab fa-bootstrap text-4xl text-purple-600 mb-2"></i>
+                    <p class="text-[10px] font-bold">BOOTSTRAP</p>
                 </div>
             </div>
         </div>
@@ -165,108 +162,92 @@
 
     <section id="services" class="py-24 bg-slate-950/40">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12" data-aos="fade-right">My Services</h2>
+            <h2 class="text-3xl font-bold mb-12 text-teal-400" data-aos="fade-right">My Services</h2>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="glass-card p-8 rounded-3xl" data-aos="fade-up">
                     <div class="w-12 h-12 bg-teal-500/20 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-code text-teal-400"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Web Development</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Membangun website dari nol dengan performa tinggi dan keamanan terjamin.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">Membangun website tangguh dengan backend Laravel dan frontend React.</p>
                 </div>
                 <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-12 h-12 bg-teal-500/20 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-mobile-alt text-teal-400"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Responsive Design</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Tampilan website yang sempurna di semua perangkat mulai dari HP hingga monitor besar.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">Optimasi tampilan di semua perangkat, dari smartphone hingga desktop.</p>
                 </div>
                 <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-12 h-12 bg-teal-500/20 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-search text-teal-400"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">SEO Optimization</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Optimasi struktur kode agar website Anda lebih mudah ditemukan di Google.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">Meningkatkan peringkat pencarian website Anda di Google secara organik.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-24">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-10" data-aos="fade-right">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="group glass-card overflow-hidden rounded-3xl cursor-pointer" 
-                     data-aos="zoom-in-up" onclick="window.open('https://yourlink.com')">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600" 
-                             class="w-full h-64 object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
-                        <div class="absolute inset-0 bg-teal-500/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    </div>
-                    <div class="p-8 flex justify-between items-center">
-                        <div>
-                            <h3 class="text-2xl font-bold">E-Commerce Web</h3>
-                            <p class="text-teal-400 text-xs mt-1 uppercase font-bold tracking-widest">Laravel / React</p>
-                        </div>
-                        <i class="fas fa-arrow-right -rotate-45 text-teal-400 group-hover:rotate-0 transition"></i>
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-10 text-teal-400" data-aos="fade-right">Selected Projects</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="group relative overflow-hidden rounded-3xl glass-card cursor-pointer" data-aos="zoom-in" onclick="window.open('https://yourlink.com')">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" class="w-full h-64 object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold group-hover:text-teal-400 transition">E-Commerce App</h3>
+                        <p class="text-slate-400 mt-2">Sistem Belanja Terintegrasi (Laravel / Tailwind)</p>
                     </div>
                 </div>
-                <div class="group glass-card overflow-hidden rounded-3xl cursor-pointer" 
-                     data-aos="zoom-in-up" data-aos-delay="200" onclick="window.open('https://yourlink.com')">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" 
-                             class="w-full h-64 object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
-                        <div class="absolute inset-0 bg-teal-500/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    </div>
-                    <div class="p-8 flex justify-between items-center">
-                        <div>
-                            <h3 class="text-2xl font-bold">Saas Dashboard</h3>
-                            <p class="text-teal-400 text-xs mt-1 uppercase font-bold tracking-widest">Node JS / Tailwind</p>
-                        </div>
-                        <i class="fas fa-arrow-right -rotate-45 text-teal-400 group-hover:rotate-0 transition"></i>
+                <div class="group relative overflow-hidden rounded-3xl glass-card cursor-pointer" data-aos="zoom-in" data-aos-delay="100" onclick="window.open('https://yourlink.com')">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" class="w-full h-64 object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition duration-700">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold group-hover:text-teal-400 transition">Analytics Dashboard</h3>
+                        <p class="text-slate-400 mt-2">Monitoring Data Real-time (React JS)</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-950 pt-20 pb-10 px-6 border-t border-white/5">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
+    <footer class="bg-slate-950 pt-24 pb-10 px-6 border-t border-white/5">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-16 mb-20">
             <div>
-                <h1 class="text-2xl font-bold tracking-tighter text-teal-400 mb-6">FE.DEV</h1>
-                <p class="text-slate-500 text-sm leading-relaxed mb-6">
-                    Membangun masa depan digital melalui kode yang elegan dan fungsional. Mari bekerja sama untuk mewujudkan visi Anda.
-                </p>
+                <h1 class="text-2xl font-bold text-teal-400 mb-6 tracking-tighter">RENDY.DEV</h1>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Elevating your digital presence with creative solutions and robust engineering.</p>
                 <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-teal-500 transition hover:text-slate-950"><i class="fab fa-github"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-teal-500 transition hover:text-slate-950"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-teal-500 transition hover:text-slate-950"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/62895700268700" target="_blank" class="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-teal-500 hover:text-slate-950 transition-all text-xl" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/ren_nasution" target="_blank" class="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-teal-500 hover:text-slate-950 transition-all text-xl" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@rendy.pratama308" target="_blank" class="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-teal-500 hover:text-slate-950 transition-all text-xl" title="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div>
-                <h4 class="font-bold mb-6 text-white uppercase text-xs tracking-[0.2em]">Quick Links</h4>
+                <h4 class="font-bold text-white uppercase text-xs tracking-widest mb-8">Direct Contact</h4>
                 <ul class="space-y-4 text-slate-500 text-sm">
-                    <li><a href="#home" class="hover:text-teal-400 transition">Beranda</a></li>
-                    <li><a href="#about" class="hover:text-teal-400 transition">Tentang</a></li>
-                    <li><a href="#skills" class="hover:text-teal-400 transition">Keahlian</a></li>
-                    <li><a href="#projects" class="hover:text-teal-400 transition">Projek</a></li>
+                    <li class="flex items-center gap-3"><i class="fab fa-whatsapp text-teal-400"></i> +62 895-7002-68700</li>
+                    <li class="flex items-center gap-3"><i class="fab fa-instagram text-teal-400"></i> @ren_nasution</li>
+                    <li class="flex items-center gap-3"><i class="fab fa-tiktok text-teal-400"></i> @rendy.pratama308</li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold mb-6 text-white uppercase text-xs tracking-[0.2em]">Hire Me</h4>
-                <p class="text-slate-500 text-sm mb-4 italic">Punya proyek menarik? Mari berdiskusi!</p>
-                <a href="mailto:farisedrik@email.com" class="text-teal-400 font-bold hover:underline">farisedrik@email.com</a>
+                <h4 class="font-bold text-white uppercase text-xs tracking-widest mb-8">Quick Menu</h4>
+                <div class="grid grid-cols-2 gap-4 text-slate-500 text-sm">
+                    <a href="#home" class="hover:text-teal-400 transition">Beranda</a>
+                    <a href="#about" class="hover:text-teal-400 transition">Tentang</a>
+                    <a href="#skills" class="hover:text-teal-400 transition">Skills</a>
+                    <a href="#projects" class="hover:text-teal-400 transition">Projek</a>
+                </div>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto pt-10 border-t border-white/5 text-center text-[10px] text-slate-600 tracking-[0.4em] uppercase">
-            &copy; 2026 Developed with Passion by Faris Edrik.
+        <div class="max-w-6xl mx-auto pt-10 border-t border-white/5 text-center text-[10px] text-slate-600 tracking-[0.5em] uppercase">
+            &copy; 2026 Crafted by Rendy.
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: false });
-
         const music = document.getElementById("bgMusic");
         const icon = document.getElementById("musicIcon");
 
