@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Portofolio | Dark Aesthetic</title>
+    <title>Professional Portofolio | Faris Edrik</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Background Gradient seperti di Foto */
         body {
             background: radial-gradient(circle at top right, #134e4a, #0f172a 40%),
                         radial-gradient(circle at bottom left, #1e1b4b, #0f172a 50%);
@@ -25,19 +24,14 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .text-glow {
-            text-shadow: 0 0 15px rgba(45, 212, 191, 0.5);
-        }
-
         /* Animasi halusan untuk gambar profil */
         .profile-float {
             animation: floating 3s ease-in-out infinite;
         }
 
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
@@ -46,134 +40,143 @@
     <audio id="bgMusic" loop>
         <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
     </audio>
-    <button onclick="toggleMusic()" class="fixed bottom-5 right-5 z-50 bg-teal-500 p-3 rounded-full shadow-lg hover:scale-110 transition">
-        <i id="musicIcon" class="fas fa-music"></i>
-    </button>
 
-    <nav class="fixed top-0 w-full z-50 bg-slate-950/50 backdrop-blur-lg border-b border-white/10">
+    <nav class="fixed top-0 w-full z-50 bg-slate-950/50 backdrop-blur-md border-b border-white/10">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold tracking-tighter text-teal-400">PORTOFOLIO.</h1>
-            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
-                <a href="#home" class="hover:text-teal-400 transition">Home</a>
-                <a href="#about" class="hover:text-teal-400 transition">About</a>
-                <a href="#projects" class="hover:text-teal-400 transition">Project</a>
+            <h1 class="text-xl font-bold tracking-tighter text-teal-400">FE.DEV</h1>
+            <div class="flex space-x-6 text-xs font-medium uppercase tracking-widest">
+                <a href="#home" class="hover:text-teal-400 transition">Beranda</a>
+                <a href="#about" class="hover:text-teal-400 transition">Tentang</a>
+                <a href="#skills" class="hover:text-teal-400 transition">Keahlian</a>
+                <a href="#projects" class="hover:text-teal-400 transition">Projek</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
-        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right" data-aos-duration="1000">
-                <span class="bg-teal-500/10 text-teal-400 px-4 py-1 rounded-full text-xs font-bold border border-teal-500/20">
-                    "Available for Work"
-                </span>
-                <h2 class="text-5xl md:text-7xl font-black mt-6 leading-tight">
-                    Hi, I'm <br><span class="text-teal-400 text-glow">Faris Edrik</span>
+    <section id="home" class="h-[80vh] flex items-center justify-center px-6">
+        <div class="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-10">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl md:text-6xl font-black leading-tight">
+                    Hi, I'm <span class="text-teal-400">Faris Edrik</span>
                 </h2>
-                <p class="text-slate-400 mt-6 text-lg max-w-md">
-                    Pengembang web yang berfokus pada desain modern dan performa tinggi. Membangun pengalaman digital yang interaktif.
-                </p>
-                <div class="mt-10 flex gap-4">
-                    <button class="bg-white text-black px-6 py-3 rounded-lg font-bold hover:bg-teal-400 transition">Download CV</button>
-                    <button class="border border-white/20 px-6 py-3 rounded-lg font-bold hover:bg-white/10 transition">Explore Projects</button>
+                <p class="text-slate-400 mt-4 text-lg">Web Developer & UI/UX Enthusiast.</p>
+                <div class="mt-6 flex gap-4">
+                    <button onclick="toggleMusic()" class="bg-teal-500 text-white px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-teal-600 transition">
+                        <i id="musicIcon" class="fas fa-play"></i> Play Music
+                    </button>
+                    <a href="#projects" class="border border-white/20 px-5 py-2 rounded-full text-sm font-bold hover:bg-white/10 transition">Explore Work</a>
                 </div>
             </div>
-            <div class="relative flex justify-center" data-aos="zoom-in" data-aos-duration="1500">
-                <div class="glass-card p-4 rounded-[2rem] profile-float">
-                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400" 
-                         alt="Profile" class="rounded-[1.5rem] w-full max-w-[320px] shadow-2xl">
-                    <div class="mt-4 text-center">
-                        <p class="font-bold text-lg">Faris Edrik P</p>
-                        <p class="text-teal-400 text-xs tracking-widest">WEB DEVELOPER</p>
+            <div data-aos="zoom-in" class="profile-float">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=300" 
+                     class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-2xl border-2 border-teal-500 shadow-[0_0_30px_rgba(20,184,166,0.3)]">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-slate-950/20">
+        <div class="max-w-4xl mx-auto px-6" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-6 text-teal-400">Tentang Saya</h2>
+            <p class="text-lg text-slate-300 leading-relaxed italic border-l-4 border-teal-500 pl-6">
+                "Saya adalah seorang pengembang aplikasi berbasis web yang memiliki dedikasi tinggi dalam menciptakan solusi digital yang efisien. Dengan fokus pada kebersihan kode dan keindahan visual, saya membantu mengubah ide menjadi realitas."
+            </p>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Keahlian Utama</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left">
+                    <i class="fab fa-laravel text-4xl text-red-500 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">Laravel</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="50">
+                    <i class="fab fa-react text-4xl text-cyan-400 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">React JS</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">Javascript</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="150">
+                    <i class="fab fa-php text-4xl text-indigo-400 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">PHP Native</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fas fa-wind text-4xl text-sky-400 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">Tailwind</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="250">
+                    <i class="fab fa-bootstrap text-4xl text-purple-500 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">Bootstrap</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fas fa-database text-4xl text-blue-500 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">MySQL</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="350">
+                    <i class="fab fa-git-alt text-4xl text-orange-500 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">Git Github</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="400">
+                    <i class="fab fa-node-js text-4xl text-green-500 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">Node JS</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl text-center hover:bg-teal-500/10 transition" data-aos="flip-left" data-aos-delay="450">
+                    <i class="fas fa-leaf text-4xl text-green-400 mb-2"></i>
+                    <p class="text-xs font-bold uppercase">Alpine JS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-slate-950/20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-10" data-aos="fade-right">Projek Terbaru</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="group glass-card overflow-hidden rounded-2xl cursor-pointer" 
+                     data-aos="zoom-in-up" onclick="window.open('https://link-web-anda.com')">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600" 
+                         class="w-full h-56 object-cover opacity-50 group-hover:opacity-100 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold group-hover:text-teal-400">Inventory System</h3>
+                        <p class="text-slate-400 text-sm mt-2">Dibuat menggunakan Laravel & MySQL.</p>
+                    </div>
+                </div>
+                <div class="group glass-card overflow-hidden rounded-2xl cursor-pointer" 
+                     data-aos="zoom-in-up" data-aos-delay="100" onclick="window.open('https://link-web-anda.com')">
+                    <img src="https://images.unsplash.com/photo-1551288049-bbbda546697a?q=80&w=600" 
+                         class="w-full h-56 object-cover opacity-50 group-hover:opacity-100 transition duration-500">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold group-hover:text-teal-400">E-Learning Platform</h3>
+                        <p class="text-slate-400 text-sm mt-2">Interaktif dengan React & Tailwind.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 bg-slate-950/30">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12" data-aos="fade-up">Keahlian & Framework</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="glass-card p-8 rounded-2xl group hover:border-teal-500/50 transition" data-aos="flip-left" data-aos-delay="100">
-                    <i class="fab fa-laravel text-5xl text-red-500 mb-4 group-hover:scale-110 transition"></i>
-                    <p class="font-bold">Laravel</p>
-                </div>
-                <div class="glass-card p-8 rounded-2xl group hover:border-teal-500/50 transition" data-aos="flip-left" data-aos-delay="200">
-                    <i class="fab fa-react text-5xl text-cyan-400 mb-4 group-hover:scale-110 transition"></i>
-                    <p class="font-bold">React JS</p>
-                </div>
-                <div class="glass-card p-8 rounded-2xl group hover:border-teal-500/50 transition" data-aos="flip-left" data-aos-delay="300">
-                    <i class="fab fa-js text-5xl text-yellow-400 mb-4 group-hover:scale-110 transition"></i>
-                    <p class="font-bold">Javascript</p>
-                </div>
-                <div class="glass-card p-8 rounded-2xl group hover:border-teal-500/50 transition" data-aos="flip-left" data-aos-delay="400">
-                    <i class="fab fa-node-js text-5xl text-green-500 mb-4 group-hover:scale-110 transition"></i>
-                    <p class="font-bold">Node JS</p>
-                </div>
-            </div>
-            <div class="mt-20 text-slate-300 leading-relaxed text-lg" data-aos="fade-up">
-                <h3 class="text-2xl font-bold text-white mb-4">Tentang Saya</h3>
-                <p>Saya adalah individu yang antusias dalam dunia IT, selalu haus akan teknologi baru. Pengalaman saya dalam Laravel dan React memungkinkan saya membangun website dari sisi server hingga tampilan depan yang memukau.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-16 border-l-4 border-teal-500 pl-6" data-aos="fade-right">Selected Projects</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="group relative overflow-hidden rounded-3xl glass-card cursor-pointer" 
-                     data-aos="fade-up"
-                     onclick="window.open('https://yourprojectlink.com', '_blank')">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" 
-                         class="w-full h-[400px] object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
-                    <div class="absolute bottom-0 left-0 p-10 w-full bg-gradient-to-t from-black to-transparent">
-                        <p class="text-teal-400 text-sm font-bold mb-2">FULLSTACK DEVELOPMENT</p>
-                        <h3 class="text-3xl font-bold">E-Commerce App</h3>
-                        <p class="text-slate-300 mt-2 opacity-0 group-hover:opacity-100 transition duration-500 text-sm">Klik untuk melihat demonstrasi proyek.</p>
-                    </div>
-                </div>
-                <div class="group relative overflow-hidden rounded-3xl glass-card cursor-pointer" 
-                     data-aos="fade-up" data-aos-delay="200"
-                     onclick="window.open('https://yourprojectlink.com', '_blank')">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" 
-                         class="w-full h-[400px] object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
-                    <div class="absolute bottom-0 left-0 p-10 w-full bg-gradient-to-t from-black to-transparent">
-                        <p class="text-teal-400 text-sm font-bold mb-2">DASHBOARD DESIGN</p>
-                        <h3 class="text-3xl font-bold">Financial Tracker</h3>
-                        <p class="text-slate-300 mt-2 opacity-0 group-hover:opacity-100 transition duration-500 text-sm">Klik untuk melihat demonstrasi proyek.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center text-slate-500 text-xs tracking-[0.3em] uppercase border-t border-white/5">
-        &copy; 2026 Crafted by Yours Truly.
+    <footer class="py-10 text-center text-slate-500 text-[10px] tracking-[0.4em] uppercase">
+        Design by Faris Edrik &copy; 2026
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi Animasi Scroll
-        AOS.init({
-            once: false,
-            mirror: true
-        });
+        AOS.init({ duration: 800, once: false });
 
-        // Fungsi Musik
         const music = document.getElementById("bgMusic");
         const icon = document.getElementById("musicIcon");
 
         function toggleMusic() {
             if (music.paused) {
                 music.play();
-                icon.classList.remove("fa-music");
+                icon.classList.remove("fa-play");
                 icon.classList.add("fa-pause");
             } else {
                 music.pause();
                 icon.classList.remove("fa-pause");
-                icon.classList.add("fa-music");
+                icon.classList.add("fa-play");
             }
         }
     </script>
